@@ -266,6 +266,9 @@ def generate_next_question(resume_text):
         # Clear answer fields for the next question
         st.session_state["transcribed_text"] = ""
         st.session_state["typed_answer"] = ""
+        
+        # Increment question counter to force text area to clear
+        st.session_state["question_counter"] = st.session_state.get("question_counter", 0) + 1
 
     # Advance category index for next time
     st.session_state["category_index"] = (idx + 1) % max(1, len(categories))
@@ -305,6 +308,8 @@ if "current_question" not in st.session_state:
     st.session_state["current_question"] = None
 if "typed_answer" not in st.session_state:
     st.session_state["typed_answer"] = ""
+if "question_counter" not in st.session_state:
+    st.session_state["question_counter"] = 0
 
 
 # === Generate Initial AI Question Button ===
@@ -366,7 +371,9 @@ if st.session_state["current_question"]:
 
     with col2:
         st.write("### Type Answer")
-        manual_text = st.text_area("✍️ Type Your Answer Here:", value=st.session_state.get("typed_answer", ""), key="manual_text_area")
+        # Use a unique key that changes when we want to clear the text area
+        text_area_key = f"manual_text_area_{st.session_state.get('question_counter', 0)}"
+        manual_text = st.text_area("✍️ Type Your Answer Here:", value=st.session_state.get("typed_answer", ""), key=text_area_key)
         
         st.session_state["typed_answer"] = manual_text
         
