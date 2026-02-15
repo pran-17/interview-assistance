@@ -50,7 +50,7 @@ def extract_resume_insights(resume_text):
     # Heuristic project extraction: lines or phrases containing 'project' or 'developed/built'
     possible_projects = []
     for line in safe_text.splitlines():
-        line_stripped = line.strip()
+        line_stripped = line.strip() # Avoid processing empty lines
         if not line_stripped:
             continue
         l = line_stripped.lower()
