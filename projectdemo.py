@@ -1,7 +1,7 @@
 # === Install dependencies first ===
 # pip install streamlit speechrecognition pyaudio textblob transformers torch PyPDF2
 
-import streamlit as st
+import streamlit as st #streamlit
 import speech_recognition as sr
 from textblob import TextBlob
 from transformers import pipeline
