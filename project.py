@@ -61,7 +61,7 @@ def extract_resume_insights(resume_text):
     domain_candidates = [p for p in noun_phrases if any(k in p for k in ["system", "platform", "pipeline", "application", "model", "api", "service", "dashboard", "analysis"])]
 
     return {
-        "noun_phrases": noun_phrases[:100],
+        "noun_phrases": noun_phrases[:100], # limit to 100 for performance
         "skills": detected_skills[:30],
         "projects": possible_projects[:10],
         "domains": domain_candidates[:20],
