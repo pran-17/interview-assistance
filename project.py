@@ -6,7 +6,7 @@ import speech_recognition as sr
 from textblob import TextBlob
 from transformers import pipeline
 import PyPDF2
-import torch
+import torch # Ensure torch is imported to avoid issues with transformers on some systems
 import random
 import time 
 import hashlib
