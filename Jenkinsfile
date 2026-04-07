@@ -29,7 +29,7 @@ pipeline {
             steps {
                 sh '''
                 . venv/bin/activate
-                python project.py
+                streamlit run project.py
                 '''
             }
         }
