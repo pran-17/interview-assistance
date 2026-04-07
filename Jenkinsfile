@@ -29,7 +29,7 @@ pipeline {
             steps {
                 sh '''
                 . venv/bin/activate
-                python app.py
+                python project.py
                 '''
             }
         }
